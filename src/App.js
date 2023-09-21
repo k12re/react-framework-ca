@@ -5,6 +5,7 @@ import ProductItem from "./components/ProductItem";
 import ProductPage from "./components/ProductPage";
 import ContactPage from "./components/ContactPage";
 import * as Styled from "./App.styles";
+import CartIcon from "./images/cart.svg";
 
 export const url = "https://api.noroff.dev/api/v1/online-shop";
 
@@ -53,13 +54,16 @@ function NotFound() {
 }
 
 function Cart() {
-  return <div>Cart</div>;
+  return (
+    <div>
+      <img className="cart-icon" src={CartIcon} />
+    </div>
+  );
 }
 
 function Header() {
   return (
     <header>
-      <div>Header</div>
       <Nav />
       <Cart />
     </header>
@@ -68,8 +72,7 @@ function Header() {
 
 function Nav() {
   return (
-    <nav>
-      Nav
+    <Styled.Nav>
       <ul>
         <li key={"home"}>
           <Link to="/">Home</Link>
@@ -81,7 +84,7 @@ function Nav() {
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
-    </nav>
+    </Styled.Nav>
   );
 }
 

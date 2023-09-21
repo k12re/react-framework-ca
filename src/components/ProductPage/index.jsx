@@ -1,6 +1,8 @@
+import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { url } from "../../App";
+import * as Styled from "../../App.styles";
 
 function ProductPage() {
   const [data, setData] = useState(null);
@@ -38,7 +40,7 @@ function ProductPage() {
   return (
     <div>
       <div>
-        <div>
+        <Styled.ProductContainer>
           <h2>{data.title}</h2>
           <img src={data.imageUrl} alt={data.title} />
           <p>{data.description}</p>
@@ -47,7 +49,10 @@ function ProductPage() {
             <p>Discounted Price: {data.discountedPrice}</p>
           )}
           <p>Rating: {data.rating}</p>
-        </div>
+          <Styled.Button>
+            <Link to={`/product/${data.id}`}>Add to cart</Link>
+          </Styled.Button>
+        </Styled.ProductContainer>
       </div>
     </div>
   );

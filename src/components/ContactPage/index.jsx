@@ -26,23 +26,25 @@ function ContactPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="full-name">Full name: </label>
-      <input name="full-name" {...register("fullName")} />
-      <p>{errors.fullName?.message}</p>
-      <label htmlFor="subject">Subject: </label>
-      <input name="subject" {...register("subject")} />
-      <p>{errors.subject?.message}</p>
-      <label htmlFor="email">Email: </label>
-      <input name="email" {...register("email")} />
-      <p>{errors.email?.message}</p>
-      <label htmlFor="body">Body text: </label>
-      <input name="body" {...register("body")} />
-      <p>{errors.body?.message}</p>
-      {/* <input type="submit" />
+    <Styled.FormContainer>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <label htmlFor="full-name">Full name: </label>
+        <input name="full-name" {...register("fullName")} />
+        <p>{errors.fullName?.message}</p>
+        <label htmlFor="subject">Subject: </label>
+        <input name="subject" {...register("subject")} />
+        <p>{errors.subject?.message}</p>
+        <label htmlFor="email">Email: </label>
+        <input name="email" {...register("email")} />
+        <p>{errors.email?.message}</p>
+        <label htmlFor="body">Body text: </label>
+        <input name="body" {...register("body")} />
+        <p>{errors.body?.message}</p>
+        {/* <input type="submit" />
       <button type="submit">Submit button</button> */}
-      <Styled.Button>Submit</Styled.Button>
-    </form>
+        <Styled.Button>Submit</Styled.Button>
+      </form>
+    </Styled.FormContainer>
   );
 }
 
