@@ -1,12 +1,43 @@
 import { Outlet, Route, Routes, Link, useParams } from "react-router-dom";
 import "./App.css";
+import { useEffect, useState } from "react";
+import ProductItem from "./components/ProductItem";
+import ProductPage from "./components/ProductPage";
+import ContactPage from "./components/ContactPage";
+import * as Styled from "./App.styles";
+
+export const url = "https://api.noroff.dev/api/v1/online-shop";
 
 function Home() {
-  return <div>Home</div>;
-}
+  const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+  const [isError, setIsError] = useState(false);
 
-function ProductPage() {
-  return <div>Product Page</div>;
+  useEffect(() => {
+    async function getData() {
+      try {
+        setIsLoading(true);
+        setIsError(false);
+
+        const response = await fetch(url);
+        const json = await response.json();
+        setData(json);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        setIsLoading(false);
+      }
+    }
+    getData();
+  }, []);
+
+  return (
+    <ul>
+      {data.map((item) => (
+        <ProductItem key={item.id} data={item} />
+      ))}
+    </ul>
+  );
 }
 
 function CheckOutPage() {
@@ -15,10 +46,6 @@ function CheckOutPage() {
 
 function CheckOutSuccessPage() {
   return <div>Checkout Success Page</div>;
-}
-
-function ContactPage() {
-  return <div>Contact Page</div>;
 }
 
 function NotFound() {
@@ -44,16 +71,13 @@ function Nav() {
     <nav>
       Nav
       <ul>
-        <li>
+        <li key={"home"}>
           <Link to="/">Home</Link>
         </li>
-        <li>
-          <Link to="/product">Product</Link>
-        </li>
-        <li>
+        <li key={"checkout"}>
           <Link to="/checkout">Checkout</Link>
         </li>
-        <li>
+        <li key={"contact"}>
           <Link to="/contact">Contact</Link>
         </li>
       </ul>
@@ -81,10 +105,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="product" element={<ProductPage />} />
+          {/* <Route path="product" element={<ProductPage />} /> */}
           <Route path="checkout" element={<CheckOutPage />} />
           <Route path="contact" element={<ContactPage />} />
           <Route path="*" element={<NotFound />} />
+          <Route path="product/:id" element={<ProductPage />} />
         </Route>
       </Routes>
     </div>
