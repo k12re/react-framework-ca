@@ -1,6 +1,12 @@
 import { Outlet, Route, Routes, Link, useParams } from "react-router-dom";
 import "./App.css";
-import { useEffect, useState } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useReducer,
+  useState,
+} from "react";
 import ProductItem from "./components/ProductItem";
 import ProductPage from "./components/ProductPage";
 import ContactPage from "./components/ContactPage";
@@ -29,7 +35,7 @@ function Home() {
         setIsLoading(false);
       }
     }
-    getData();
+    getData(data);
   }, []);
 
   return (
@@ -51,14 +57,6 @@ function CheckOutSuccessPage() {
 
 function NotFound() {
   return <div>Not found</div>;
-}
-
-function Cart() {
-  return (
-    <div>
-      <img className="cart-icon" src={CartIcon} />
-    </div>
-  );
 }
 
 function Header() {
@@ -102,20 +100,115 @@ function Layout() {
   );
 }
 
-function App() {
+export const initialState = { cart: [], total: 0, quantity: 0 };
+
+export function reducer(state, action) {
+  let productIndex;
+  let newTotal;
+  let newQuantity;
+  let cart;
+
+  switch (action.type) {
+    case "addProduct":
+      cart = [...state.cart];
+      productIndex = cart.findIndex((data) => data.id === action.payload.id);
+      if (productIndex === -1) {
+        cart.push({
+          ...action.payload,
+          quantity: 1,
+          price: action.payload.price,
+        });
+      } else {
+        cart = [
+          ...cart.slice(0, productIndex),
+          { ...cart[productIndex], quantity: cart[productIndex].quantity + 1 },
+          ...cart.slice(productIndex + 1),
+        ];
+      }
+      newQuantity = cart.reduce((currentQuantity, product) => {
+        currentQuantity += product.quantity;
+        return currentQuantity;
+      }, 0);
+      newTotal = cart.reduce((currentTotal, product) => {
+        // console.log("price:", product.price, "qty:", product.quantity);
+        currentTotal += product.price * product.quantity;
+        return currentTotal;
+      }, 0);
+      console.log("New Total:", newTotal);
+      console.log("New Qty:", newQuantity);
+      console.log(state);
+      return { ...state, cart: cart, total: newTotal, quantity: newQuantity };
+    default:
+      return state;
+  }
+}
+
+export const CartContext = createContext();
+
+export function CartProvider({ children }) {
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <CartContext.Provider value={{ state, dispatch }}>
+      {children}
+    </CartContext.Provider>
+  );
+}
+
+export function useCart() {
+  return useContext(CartContext);
+}
+
+export function AddToCart({ data }) {
+  const { dispatch } = useCart();
+
+  const handleClick = () => {
+    dispatch({ type: "addProduct", payload: data });
+  };
+
+  return <Styled.Button onClick={handleClick}>ADD TO CART</Styled.Button>;
+}
+
+function Cart() {
+  const { state } = useContext(CartContext);
+  const { cart, total, quantity } = state;
+
+  console.log(state);
+
   return (
     <div>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          {/* <Route path="product" element={<ProductPage />} /> */}
-          <Route path="checkout" element={<CheckOutPage />} />
-          <Route path="contact" element={<ContactPage />} />
-          <Route path="*" element={<NotFound />} />
-          <Route path="product/:id" element={<ProductPage />} />
-        </Route>
-      </Routes>
+      <img className="cart-icon" src={CartIcon} />
+      <ul>
+        {cart.map((item) => (
+          <li key={item.id}>
+            {item.name} - Qty: {item.quantity}
+          </li>
+        ))}
+        <p>Total: {total}</p>
+        <p>Total qty: {quantity}</p>
+      </ul>
     </div>
+  );
+}
+
+function App() {
+  return (
+    <>
+      <CartProvider>
+        <div>
+          <Routes>
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Home />} />
+              {/* <Route path="product" element={<ProductPage />} /> */}
+              <Route path="checkout" element={<CheckOutPage />} />
+              <Route path="contact" element={<ContactPage />} />
+              <Route path="*" element={<NotFound />} />
+              <Route path="product/:id" element={<ProductPage />} />
+            </Route>
+          </Routes>
+        </div>
+      </CartProvider>
+    </>
   );
 }
 

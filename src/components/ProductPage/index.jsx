@@ -3,6 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { url } from "../../App";
 import * as Styled from "../../App.styles";
+import { AddToCart } from "../../App";
 
 function ProductPage() {
   const [data, setData] = useState(null);
@@ -37,6 +38,8 @@ function ProductPage() {
     return <div>Error</div>;
   }
 
+  console.log(data);
+
   return (
     <div>
       <div>
@@ -52,6 +55,7 @@ function ProductPage() {
           <Styled.Button>
             <Link to={`/product/${data.id}`}>Add to cart</Link>
           </Styled.Button>
+          <AddToCart data={data} />
         </Styled.ProductContainer>
       </div>
     </div>
