@@ -52,9 +52,6 @@ function ProductPage() {
             <p>Discounted Price: {data.discountedPrice}</p>
           )}
           <p>Rating: {data.rating}</p>
-          <Styled.Button>
-            <Link to={`/product/${data.id}`}>Add to cart</Link>
-          </Styled.Button>
           <AddToCart data={data} />
         </Styled.ProductContainer>
       </div>

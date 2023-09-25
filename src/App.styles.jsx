@@ -1,15 +1,57 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  display: flex;
+  // display: flex;
   background-color: lightpink;
-  justify-content: center;
+  // justify-content: center;
+  ul {
+    display: flex;
+    justify-content: space-between;
+    margin: 0;
+    padding 10px 0;
+  }
   li {
-    display: inline-flex;
+    margin: 0 16px;
+    // display: inline-flex;
+    // justify-content: end;
+  }
+  a {
+    text-decoration: none;
+    color: white;
+    font-size: 1.5rem;
+    font-weight: bold;
   }
 `;
 
+export const ProductListContainer = styled.ul`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export const ProductContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  // margin: 0 auto;
+  gap: 10px;
+  padding: 40px;
+  margin: 20px;
+  // width: 400px;
+  // height: 600px;
+  background-color: white;
+  filter: drop-shadow(0 0 0.75rem lightgrey);
+  button {
+    width: 100%;
+  }
+  img {
+    object-fit: cover;
+    height: 400px;
+  }
+`;
+
+export const CheckoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -23,7 +65,7 @@ export const ProductContainer = styled.div`
   }
   img {
     object-fit: cover;
-    height: 400px;
+    height: 60px;
   }
 `;
 
@@ -31,6 +73,8 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  // padding: 40px;
+  // margin: 20px;
   gap: 10px;
   form {
     padding: 40px;
@@ -46,7 +90,36 @@ export const FormContainer = styled.div`
     display: block;
     padding: 6px;
     border: 1px solid black;
-    width: 95%;
+    width: 70vw;
+  }
+  button {
+    width: 100%;
+  }
+`;
+
+export const SearchFormContainer = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  // padding: 40px;
+  // margin: 20px;
+  gap: 10px;
+  form {
+    // width: 100vw;
+    padding: 20px 20px;
+    margin: 0 20px;
+    background-color: white;
+    filter: drop-shadow(0 0 0.75rem lightgrey);
+  }
+  label {
+    font-size: 1.5rem
+    justify-content: space-between;
+  }
+  input {
+    display: block;
+    padding: 6px;
+    border: 1px solid black;
+    width: 75vw;
   }
   button {
     width: 100%;
@@ -63,6 +136,7 @@ export const Button = styled.button`
   font-size: 1.5rem;
   a {
     text-decoration: none;
+    font-weight: bold;
     color: inherit;
   }
   :hover {

@@ -1,10 +1,34 @@
 .App {
   text-align: center;
+  height: 100vh;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
+}
+
+footer {
+  width: 100%;
+  bottom: 0px;
+  background-color: lightpink;
+}
+
+.cart-icon {
+  position: relative;
+  top: 0px;
+  left: 10px;
+}
+
+.test {
+  position: absolute;
+  left: 34px;
+  display: inline-flex;
+  color: white;
+  background-color: purple;
+  margin: 3px 6px;
+  padding: 0px 5px;
+  border-radius: 20px;
 }
 
 @media (prefers-reduced-motion: no-preference) {

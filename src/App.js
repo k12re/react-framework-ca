@@ -39,16 +39,38 @@ function Home() {
   }, []);
 
   return (
-    <ul>
+    <Styled.ProductListContainer>
       {data.map((item) => (
         <ProductItem key={item.id} data={item} />
       ))}
-    </ul>
+    </Styled.ProductListContainer>
   );
 }
 
 function CheckOutPage() {
-  return <div>Checkout Page</div>;
+  const { state } = useContext(CartContext);
+  const { cart, total, quantity } = state;
+
+  console.log(state);
+
+  return (
+    <Styled.CheckoutContainer>
+      {/* <img className="cart-icon" src={CartIcon} /> */}
+      <ul>
+        {cart.map((item) => (
+          <li key={item.id}>
+            <img src={item.imageUrl} />
+            {item.title} - Qty: {item.quantity}
+          </li>
+        ))}
+        <p>Total: {total}</p>
+        <p>Total qty: {quantity}</p>
+      </ul>
+      <Styled.Button>
+        <Link to={`/checkoutsuccess/`}>Checkout</Link>
+      </Styled.Button>
+    </Styled.CheckoutContainer>
+  );
 }
 
 function CheckOutSuccessPage() {
@@ -63,7 +85,10 @@ function Header() {
   return (
     <header>
       <Nav />
-      <Cart />
+      <div>
+        <Cart />
+        <Search />
+      </div>
     </header>
   );
 }
@@ -75,9 +100,9 @@ function Nav() {
         <li key={"home"}>
           <Link to="/">Home</Link>
         </li>
-        <li key={"checkout"}>
+        {/* <li key={"checkout"}>
           <Link to="/checkout">Checkout</Link>
-        </li>
+        </li> */}
         <li key={"contact"}>
           <Link to="/contact">Contact</Link>
         </li>
@@ -166,7 +191,7 @@ export function AddToCart({ data }) {
     dispatch({ type: "addProduct", payload: data });
   };
 
-  return <Styled.Button onClick={handleClick}>ADD TO CART</Styled.Button>;
+  return <Styled.Button onClick={handleClick}>Add to cart</Styled.Button>;
 }
 
 function Cart() {
@@ -177,17 +202,30 @@ function Cart() {
 
   return (
     <div>
-      <img className="cart-icon" src={CartIcon} />
-      <ul>
+      <Link to="/checkout">
+        <img className="cart-icon" src={CartIcon} />
+      </Link>
+      <p className="test"> {quantity} </p>
+      {/* <ul>
         {cart.map((item) => (
           <li key={item.id}>
-            {item.name} - Qty: {item.quantity}
+            {item.title} - Qty: {item.quantity}
           </li>
-        ))}
-        <p>Total: {total}</p>
-        <p>Total qty: {quantity}</p>
-      </ul>
+        ))} */}
+      {/* <p>Total: {total}</p>
+      </ul> */}
     </div>
+  );
+}
+
+function Search() {
+  return (
+    <Styled.SearchFormContainer>
+      <form>
+        <label htmlFor="search"></label>
+        <input name="search" placeholder="Search..." />
+      </form>
+    </Styled.SearchFormContainer>
   );
 }
 
@@ -201,6 +239,7 @@ function App() {
               <Route index element={<Home />} />
               {/* <Route path="product" element={<ProductPage />} /> */}
               <Route path="checkout" element={<CheckOutPage />} />
+              <Route path="checkoutsuccess" element={<CheckOutSuccessPage />} />
               <Route path="contact" element={<ContactPage />} />
               <Route path="*" element={<NotFound />} />
               <Route path="product/:id" element={<ProductPage />} />
