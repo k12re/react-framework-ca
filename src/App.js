@@ -1,4 +1,11 @@
-import { Outlet, Route, Routes, Link, useParams } from "react-router-dom";
+import {
+  Outlet,
+  Route,
+  Routes,
+  Link,
+  useParams,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import {
   createContext,
@@ -82,12 +89,13 @@ function NotFound() {
 }
 
 function Header() {
+  const location = useLocation();
   return (
     <header>
       <Nav />
       <div>
         <Cart />
-        <Search />
+        {location.pathname === "/" ? <Search /> : null}
       </div>
     </header>
   );
@@ -237,6 +245,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Layout />}>
               <Route index element={<Home />} />
+              <Route />
               {/* <Route path="product" element={<ProductPage />} /> */}
               <Route path="checkout" element={<CheckOutPage />} />
               <Route path="checkoutsuccess" element={<CheckOutSuccessPage />} />

@@ -8,9 +8,18 @@
   pointer-events: none;
 }
 
+html,
+body,
+#root,
+.App {
+  min-height: 100vh;
+  position: relative;
+}
+
 footer {
   width: 100%;
-  bottom: 0px;
+  bottom: 0;
+  position: absolute;
   background-color: lightpink;
 }
 

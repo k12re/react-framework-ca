@@ -28,6 +28,7 @@ export const ProductListContainer = styled.ul`
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: center;
+  margin-bottom: 0;
 `;
 
 export const ProductContainer = styled.div`
@@ -48,6 +49,7 @@ export const ProductContainer = styled.div`
   img {
     object-fit: cover;
     height: 400px;
+    max-width: 100%;
   }
 `;
 
