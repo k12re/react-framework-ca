@@ -5,6 +5,7 @@ import {
   Link,
   useParams,
   useLocation,
+  useNavigate,
 } from "react-router-dom";
 import "./App.css";
 import {
@@ -45,6 +46,8 @@ function Home() {
     getData(data);
   }, []);
 
+  console.log(data);
+
   return (
     <Styled.ProductListContainer>
       {data.map((item) => (
@@ -81,7 +84,13 @@ function CheckOutPage() {
 }
 
 function CheckOutSuccessPage() {
-  return <div>Checkout Success Page</div>;
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <Styled.CheckoutSuccess>
+      <h1>Checkout was successful</h1>
+      <ClearCart />
+    </Styled.CheckoutSuccess>
+  );
 }
 
 function NotFound() {
@@ -133,7 +142,7 @@ function Layout() {
   );
 }
 
-export const initialState = { cart: [], total: 0, quantity: 0 };
+export const initialState = { cart: [], total: 0 };
 
 export function reducer(state, action) {
   let productIndex;
@@ -171,6 +180,10 @@ export function reducer(state, action) {
       console.log("New Qty:", newQuantity);
       console.log(state);
       return { ...state, cart: cart, total: newTotal, quantity: newQuantity };
+
+    case "clearCart":
+      return { cart: [], total: 0 };
+
     default:
       return state;
   }
@@ -196,10 +209,23 @@ export function AddToCart({ data }) {
   const { dispatch } = useCart();
 
   const handleClick = () => {
-    dispatch({ type: "addProduct", payload: data });
+    {
+      dispatch({ type: "addProduct", payload: data });
+    }
   };
 
   return <Styled.Button onClick={handleClick}>Add to cart</Styled.Button>;
+}
+
+export function ClearCart() {
+  const { dispatch } = useCart();
+  const navigate = useNavigate();
+
+  const handleClear = () => {
+    dispatch({ type: "clearCart" });
+    navigate("/");
+  };
+  return <Styled.Button onClick={handleClear}>Return to home</Styled.Button>;
 }
 
 function Cart() {
@@ -231,7 +257,7 @@ function Search() {
     <Styled.SearchFormContainer>
       <form>
         <label htmlFor="search"></label>
-        <input name="search" placeholder="Search..." />
+        <input name="search" id="search" placeholder="Search..." />
       </form>
     </Styled.SearchFormContainer>
   );

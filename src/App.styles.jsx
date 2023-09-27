@@ -39,16 +39,21 @@ export const ProductContainer = styled.div`
   gap: 10px;
   padding: 40px;
   margin: 20px;
+  margin-bottom: 0;
   // width: 400px;
   // height: 600px;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
   button {
     width: 100%;
   }
   img {
     object-fit: cover;
-    height: 400px;
+    max-height: 400px;
     max-width: 100%;
   }
 `;
@@ -57,11 +62,34 @@ export const CheckoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  min-height: 60vh;
   gap: 10px;
   padding: 40px;
   margin: 20px;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
+  button {
+    width: 100%;
+  }
+  img {
+    object-fit: cover;
+    height: 60px;
+  }
+`;
+
+export const CheckoutSuccess = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 60vh;
+  gap: 10px;
+  padding: 40px;
+  margin: 20px;
+  background-color: white;
+  // filter: drop-shadow(0 0 0.75rem lightgrey);
+  h1 {
+    text-align: center;
+  }
   button {
     width: 100%;
   }
@@ -136,6 +164,7 @@ export const Button = styled.button`
   padding: 10px;
   min-width: 200px;
   font-size: 1.5rem;
+  font-weight: bold;
   a {
     text-decoration: none;
     font-weight: bold;

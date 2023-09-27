@@ -40,6 +40,8 @@ function ProductPage() {
 
   console.log(data);
 
+  const review = data.reviews;
+
   return (
     <div>
       <div>
@@ -53,6 +55,25 @@ function ProductPage() {
           )}
           <p>Rating: {data.rating}</p>
           <AddToCart data={data} />
+        </Styled.ProductContainer>
+        <Styled.ProductContainer>
+          <h2>Reviews</h2>
+          {review.length === 0 ? (
+            <h3>No reviews</h3>
+          ) : (
+            review.map((review) =>
+              review ? (
+                <li key={review.id}>
+                  <h3>{review.description}</h3>
+                  <div>Rating: {review.rating}</div>
+                  <h4>{review.username}</h4>
+                  <hr />
+                </li>
+              ) : (
+                { review }(<h2>No reviews</h2>)
+              )
+            )
+          )}
         </Styled.ProductContainer>
       </div>
     </div>

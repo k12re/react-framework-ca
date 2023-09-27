@@ -29,16 +29,16 @@ function ContactPage() {
     <Styled.FormContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="full-name">Full name: </label>
-        <input name="full-name" {...register("fullName")} />
+        <input name="full-name" id="full-name" {...register("fullName")} />
         <p>{errors.fullName?.message}</p>
         <label htmlFor="subject">Subject: </label>
-        <input name="subject" {...register("subject")} />
+        <input name="subject" id="subject" {...register("subject")} />
         <p>{errors.subject?.message}</p>
         <label htmlFor="email">Email: </label>
-        <input name="email" {...register("email")} />
+        <input name="email" id="email" {...register("email")} />
         <p>{errors.email?.message}</p>
         <label htmlFor="body">Body text: </label>
-        <input name="body" {...register("body")} />
+        <input name="body" id="body" {...register("body")} />
         <p>{errors.body?.message}</p>
         {/* <input type="submit" />
       <button type="submit">Submit button</button> */}
