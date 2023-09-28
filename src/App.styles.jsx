@@ -38,7 +38,7 @@ export const ProductContainer = styled.div`
   // margin: 0 auto;
   gap: 10px;
   padding: 40px;
-  margin: 20px;
+  margin: 40px;
   margin-bottom: 0;
   // width: 400px;
   // height: 600px;
