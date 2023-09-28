@@ -133,9 +133,10 @@ export const SearchFormContainer = styled.div`
   justify-content: center;
   // padding: 40px;
   // margin: 20px;
-  gap: 10px;
+  
   form {
-    // width: 100vw;
+    width: 80vw;
+    display: flex;
     padding: 20px 20px;
     margin: 0 20px;
     background-color: white;
@@ -149,10 +150,11 @@ export const SearchFormContainer = styled.div`
     display: block;
     padding: 6px;
     border: 1px solid black;
-    width: 75vw;
+    flex-grow: 3;
+    margin-right: 20px;
   }
   button {
-    width: 100%;
+    // width: 100%;
   }
 `;
 
@@ -164,6 +166,25 @@ export const Button = styled.button`
   padding: 10px;
   min-width: 200px;
   font-size: 1.5rem;
+  font-weight: bold;
+  a {
+    text-decoration: none;
+    font-weight: bold;
+    color: inherit;
+  }
+  :hover {
+    background-color: lightcoral;
+  }
+`;
+
+export const ButtonSmall = styled.button`
+  border: 0;
+  background-color: lightpink;
+  color: white;
+  cursor: pointer;
+  padding: 10px;
+  min-width: 100px;
+  font-size: 1rem;
   font-weight: bold;
   a {
     text-decoration: none;

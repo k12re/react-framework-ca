@@ -43,19 +43,26 @@ function Home() {
         setIsLoading(false);
       }
     }
-    getData(data);
+    getData();
   }, []);
 
   console.log(data);
 
+  const location = useLocation();
+
   return (
     <Styled.ProductListContainer>
+      {location.pathname === "/" ? <Search data={data} /> : null}
+
       {data.map((item) => (
         <ProductItem key={item.id} data={item} />
       ))}
     </Styled.ProductListContainer>
   );
 }
+// <Search data={data} />
+//{location.pathname === "/" ? <Search data={data} /> : null}
+//const location = useLocation();
 
 function CheckOutPage() {
   const { state } = useContext(CartContext);
@@ -97,14 +104,12 @@ function NotFound() {
   return <div>Not found</div>;
 }
 
-function Header() {
-  const location = useLocation();
+function Header({ data }) {
   return (
     <header>
       <Nav />
       <div>
         <Cart />
-        {location.pathname === "/" ? <Search /> : null}
       </div>
     </header>
   );
@@ -132,10 +137,10 @@ function Footer() {
   return <footer>Footer</footer>;
 }
 
-function Layout() {
+function Layout({ data, children }) {
   return (
     <div>
-      <Header />
+      <Header data={data} />
       <Outlet />
       <Footer />
     </div>
@@ -252,14 +257,54 @@ function Cart() {
   );
 }
 
-function Search() {
+function Search(props) {
+  const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+
+  const handleSearch = (event) => {
+    event.preventDefault();
+    const results = props.data.filter((item) => {
+      console.log("item title", item.title);
+      return item.title.toLowerCase().includes(searchQuery.toLowerCase());
+    });
+    setSearchResults(results);
+    console.log("results", results);
+    console.log("searchQuery", searchQuery);
+    console.log("searchResults", searchResults);
+  };
+
   return (
-    <Styled.SearchFormContainer>
-      <form>
-        <label htmlFor="search"></label>
-        <input name="search" id="search" placeholder="Search..." />
-      </form>
-    </Styled.SearchFormContainer>
+    <div>
+      <Styled.SearchFormContainer>
+        <form id="search-form" onKeyUp={handleSearch}>
+          <label htmlFor="search"></label>
+          <input
+            name="search"
+            id="search"
+            placeholder="Search..."
+            value={searchQuery}
+            onChange={(event) => setSearchQuery(event.target.value)}
+          />
+          <Styled.ButtonSmall type="submit">Search</Styled.ButtonSmall>
+        </form>
+      </Styled.SearchFormContainer>
+      <div>
+        {searchResults.map((item) => (
+          <Styled.ProductContainer>
+            <Link to={`/product/${item.id}`}>
+              <li key={item.id}>
+                <h2>{item.title}</h2>
+                <img src={item.imageUrl} alt={item.title} />
+                <p>{item.description}</p>
+                <Styled.Button>
+                  <Link to={`/product/${item.id}`}>View product</Link>
+                </Styled.Button>
+              </li>
+            </Link>
+          </Styled.ProductContainer>
+        ))}
+      </div>
+    </div>
   );
 }
 
