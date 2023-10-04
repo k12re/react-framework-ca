@@ -178,7 +178,7 @@ export function reducer(state, action) {
       }, 0);
       newTotal = cart.reduce((currentTotal, product) => {
         // console.log("price:", product.price, "qty:", product.quantity);
-        currentTotal += product.price * product.quantity;
+        currentTotal += product.discountedPrice * product.quantity;
         return currentTotal;
       }, 0);
       console.log("New Total:", newTotal);
@@ -290,17 +290,15 @@ function Search(props) {
       </Styled.SearchFormContainer>
       <div>
         {searchResults.map((item) => (
-          <Styled.ProductContainer>
-            <Link to={`/product/${item.id}`}>
-              <li key={item.id}>
-                <h2>{item.title}</h2>
-                <img src={item.imageUrl} alt={item.title} />
-                <p>{item.description}</p>
-                <Styled.Button>
-                  <Link to={`/product/${item.id}`}>View product</Link>
-                </Styled.Button>
-              </li>
-            </Link>
+          <Styled.ProductContainer key={item.id}>
+            <li>
+              <h2>{item.title}</h2>
+              <img src={item.imageUrl} alt={item.title} />
+              <p>{item.description}</p>
+              <Styled.Button>
+                <Link to={`/product/${item.id}`}>View product</Link>
+              </Styled.Button>
+            </li>
           </Styled.ProductContainer>
         ))}
       </div>
