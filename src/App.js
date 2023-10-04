@@ -70,22 +70,33 @@ function CheckOutPage() {
 
   console.log(state);
 
+  console.log(cart);
   return (
     <Styled.CheckoutContainer>
-      {/* <img className="cart-icon" src={CartIcon} /> */}
-      <ul>
-        {cart.map((item) => (
-          <li key={item.id}>
-            <img src={item.imageUrl} />
-            {item.title} - Qty: {item.quantity}
-          </li>
-        ))}
-        <p>Total: {total}</p>
-        <p>Total qty: {quantity}</p>
-      </ul>
-      <Styled.Button>
-        <Link to={`/checkoutsuccess/`}>Checkout</Link>
-      </Styled.Button>
+      {cart.length > 0 ? (
+        <>
+          <ul>
+            {cart.map((item) => (
+              <li key={item.id}>
+                <img src={item.imageUrl} />
+                <p>{item.title} - </p>
+                <p>Qty: {item.quantity}</p>
+              </li>
+            ))}
+            <h2>Total: {total.toFixed(2)}</h2>
+          </ul>
+          <Styled.Button>
+            <Link to={`/checkoutsuccess/`}>Checkout</Link>
+          </Styled.Button>
+        </>
+      ) : (
+        <>
+          <h1>Cart is empty</h1>
+          <Styled.Button>
+            <Link to={`/`}>Return to home</Link>
+          </Styled.Button>
+        </>
+      )}
     </Styled.CheckoutContainer>
   );
 }
@@ -285,7 +296,6 @@ function Search(props) {
             value={searchQuery}
             onChange={(event) => setSearchQuery(event.target.value)}
           />
-          <Styled.ButtonSmall type="submit">Search</Styled.ButtonSmall>
         </form>
       </Styled.SearchFormContainer>
       <div>

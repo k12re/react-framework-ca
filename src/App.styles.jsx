@@ -74,6 +74,25 @@ export const CheckoutContainer = styled.div`
   img {
     object-fit: cover;
     height: 60px;
+    width: 60px;
+  }
+  li {
+    border: 1px solid lightgrey;
+    background-color: #fff;
+    display: flex;
+    font-weight: bold;
+    margin: 5px 0;
+  }
+  p {
+    padding-left: 10px;
+    text-align: end;
+    font-weight: bold;
+  }
+  h1 {
+    text-align: center;
+  }
+  h2 {
+    text-align: end;
   }
 `;
 
@@ -154,7 +173,7 @@ export const SearchFormContainer = styled.div`
     padding: 6px;
     border: 1px solid black;
     flex-grow: 3;
-    margin-right: 20px;
+
   }
   button {
     // width: 100%;
