@@ -34,17 +34,20 @@ export const ProductListContainer = styled.ul`
 export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: space-between;
 
   // margin: 0 auto;
   gap: 10px;
   padding: 40px;
   margin: 40px;
   margin-bottom: 0;
-  // width: 400px;
-  // height: 600px;
+  max-width: 280px;
+  // max-height: 100%;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
+  li {
+    display: contents;
+  }
   a {
     text-decoration: none;
     color: inherit;
@@ -54,7 +57,7 @@ export const ProductContainer = styled.div`
   }
   img {
     object-fit: cover;
-    max-height: 100%;
+    max-height: 300px;
     max-width: 100%;
   }
 `;
