@@ -85,9 +85,7 @@ function CheckOutPage() {
             ))}
             <h2>Total: {total.toFixed(2)}</h2>
           </ul>
-          <Styled.Button>
-            <Link to={`/checkoutsuccess/`}>Checkout</Link>
-          </Styled.Button>
+          <ClearCart />
         </>
       ) : (
         <>
@@ -106,7 +104,9 @@ function CheckOutSuccessPage() {
   return (
     <Styled.CheckoutSuccess>
       <h1>Checkout was successful</h1>
-      <ClearCart />
+      <Styled.Button>
+        <Link to={`/`}>Return to home</Link>
+      </Styled.Button>
     </Styled.CheckoutSuccess>
   );
 }
@@ -239,9 +239,9 @@ export function ClearCart() {
 
   const handleClear = () => {
     dispatch({ type: "clearCart" });
-    navigate("/");
+    navigate("/checkoutsuccess");
   };
-  return <Styled.Button onClick={handleClear}>Return to home</Styled.Button>;
+  return <Styled.Button onClick={handleClear}>Checkout</Styled.Button>;
 }
 
 function Cart() {
