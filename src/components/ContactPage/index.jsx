@@ -5,10 +5,25 @@ import * as Styled from "../../App.styles";
 
 const schema = yup
   .object({
-    fullName: yup.string().min(3).max(100).required(),
-    subject: yup.string().min(3).max(100).required(),
-    email: yup.string().email().required(),
-    body: yup.string().min(3).max(100).required(),
+    fullName: yup
+      .string()
+      .required("Please enter name")
+      .min(3, "Minimum 3 characters")
+      .max(100, "Maximum 100 characters"),
+    subject: yup
+      .string()
+      .required("Please enter subject")
+      .min(3, "Minimum 3 characters")
+      .max(100, "Maximum 100 characters"),
+    email: yup
+      .string()
+      .required("Please enter email address")
+      .email("Please enter a valid email address"),
+    body: yup
+      .string()
+      .required("Please enter text")
+      .min(3, "Minimum 3 characters")
+      .max(100, "Maximum 100 characters"),
   })
   .required();
 

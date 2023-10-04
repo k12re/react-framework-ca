@@ -125,6 +125,9 @@ export const FormContainer = styled.div`
   button {
     width: 100%;
   }
+  p {
+    color: darkred;
+  }
 `;
 
 export const SearchFormContainer = styled.div`
