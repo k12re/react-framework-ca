@@ -46,8 +46,6 @@ function Home() {
     getData();
   }, []);
 
-  console.log(data);
-
   const location = useLocation();
 
   return (
@@ -60,9 +58,6 @@ function Home() {
     </Styled.ProductListContainer>
   );
 }
-// <Search data={data} />
-//{location.pathname === "/" ? <Search data={data} /> : null}
-//const location = useLocation();
 
 function CheckOutPage() {
   const { state } = useContext(CartContext);
@@ -133,9 +128,6 @@ function Nav() {
         <li key={"home"}>
           <Link to="/">Home</Link>
         </li>
-        {/* <li key={"checkout"}>
-          <Link to="/checkout">Checkout</Link>
-        </li> */}
         <li key={"contact"}>
           <Link to="/contact">Contact</Link>
         </li>
@@ -248,22 +240,12 @@ function Cart() {
   const { state } = useContext(CartContext);
   const { cart, total, quantity } = state;
 
-  console.log(state);
-
   return (
     <div>
       <Link to="/checkout">
         <img className="cart-icon" src={CartIcon} />
       </Link>
-      <p className="test"> {quantity} </p>
-      {/* <ul>
-        {cart.map((item) => (
-          <li key={item.id}>
-            {item.title} - Qty: {item.quantity}
-          </li>
-        ))} */}
-      {/* <p>Total: {total}</p>
-      </ul> */}
+      <p className="counter"> {quantity} </p>
     </div>
   );
 }
@@ -275,13 +257,9 @@ function Search(props) {
   const handleSearch = (event) => {
     event.preventDefault();
     const results = props.data.filter((item) => {
-      console.log("item title", item.title);
       return item.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
     setSearchResults(results);
-    console.log("results", results);
-    console.log("searchQuery", searchQuery);
-    console.log("searchResults", searchResults);
   };
 
   return (
