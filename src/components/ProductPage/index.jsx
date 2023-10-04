@@ -38,8 +38,6 @@ function ProductPage() {
     return <div>Error</div>;
   }
 
-  console.log(data);
-
   const review = data.reviews;
 
   return (
