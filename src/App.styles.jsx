@@ -35,6 +35,7 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   // margin: 0 auto;
   gap: 10px;
   padding: 40px;
@@ -53,7 +54,7 @@ export const ProductContainer = styled.div`
   }
   img {
     object-fit: cover;
-    max-height: 400px;
+    max-height: 100%;
     max-width: 100%;
   }
 `;
@@ -157,10 +158,10 @@ export const SearchFormContainer = styled.div`
   // margin: 20px;
   
   form {
-    width: 80vw;
+    width: 75vw;
     display: flex;
     padding: 20px 20px;
-    margin: 0 20px;
+    // margin: 0 20px;
     background-color: white;
     filter: drop-shadow(0 0 0.75rem lightgrey);
   }
@@ -187,6 +188,8 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 10px;
   min-width: 200px;
+  max-width: 800px;
+  margin: 0 auto;
   font-size: 1.5rem;
   font-weight: bold;
   a {

@@ -18,9 +18,12 @@ body,
 
 footer {
   width: 100%;
-  bottom: 0;
+  bottom: -80px;
+  padding-bottom: 10px;
   position: absolute;
   background-color: lightpink;
+  color: white;
+  text-align: center;
 }
 
 .cart-icon {
