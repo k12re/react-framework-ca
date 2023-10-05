@@ -37,6 +37,19 @@ export const ProductListContainer = styled.ul`
   margin-bottom: 0;
 `;
 
+export const Discount = styled.h3`
+  text-transform: uppercase;
+  transform: rotate(353deg);
+  position: relative;
+  top: -75px;
+  text-align: center;
+  background-color: red;
+  color: white;
+  padding: 10px;
+  margin: 0 auto;
+  width: 180px;
+`;
+
 export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;

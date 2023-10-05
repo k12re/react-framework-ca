@@ -42,23 +42,24 @@ function ProductPage() {
 
   const ordinaryPrice = data.price;
   const discountPrice = data.discountedPrice;
-
   const priceDiff = ((ordinaryPrice - discountPrice) / ordinaryPrice) * 100;
-
-  console.log(priceDiff);
 
   return (
     <Styled.FlexWrapper>
       <Styled.ProductContainer>
         <h2>{data.title}</h2>
         <img src={data.imageUrl} alt={data.title} />
-        <p>{data.description}</p>
-        <p>Ordinary Price: {data.price}</p>
         {data.discountedPrice !== data.price && (
-          <p>Discounted Price: {data.discountedPrice}</p>
+          <Styled.Discount>You Save: {priceDiff.toFixed(0)}%</Styled.Discount>
         )}
-        <p>You Save:{priceDiff.toFixed(0)}%</p>
-        <p>Rating: {data.rating}</p>
+        {/* <Styled.Discount>You Save: {priceDiff.toFixed(0)}%</Styled.Discount> */}
+        <p>{data.description}</p>
+        {/* {data.discountedPrice !== data.price && (
+          <h3>Discounted Price: {data.discountedPrice}</h3>
+        )} */}
+
+        <h3>Price: {data.discountedPrice}</h3>
+        <h4>Rating: {data.rating}</h4>
         <AddToCart data={data} />
       </Styled.ProductContainer>
       <Styled.ReviewsContainer>
