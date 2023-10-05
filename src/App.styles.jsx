@@ -54,7 +54,7 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  max-height: 100vh;
+  // max-height: 100vh;
   flex: 0 0 auto;
 
   // margin: 0 auto;
@@ -202,7 +202,7 @@ export const FormContainer = styled.div`
     padding: 6px;
     border: 1px solid black;
     width: 70vw;
-    max-width: 40vw;
+    // max-width: 40vw;
   }
   button {
     width: 100%;
