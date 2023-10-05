@@ -38,6 +38,8 @@ function ProductPage() {
     return <div>Error</div>;
   }
 
+  console.log(data);
+
   const review = data.reviews;
 
   const ordinaryPrice = data.price;
@@ -54,6 +56,7 @@ function ProductPage() {
         )}
         {/* <Styled.Discount>You Save: {priceDiff.toFixed(0)}%</Styled.Discount> */}
         <p>{data.description}</p>
+        <p>Tags: {data.tags.join(", ")}</p>
         {/* {data.discountedPrice !== data.price && (
           <h3>Discounted Price: {data.discountedPrice}</h3>
         )} */}
