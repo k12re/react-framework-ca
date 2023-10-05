@@ -202,7 +202,8 @@ export const FormContainer = styled.div`
     padding: 6px;
     border: 1px solid black;
     width: 70vw;
-    // max-width: 40vw;
+    box-sizing: border-box;
+    max-width: 600px;
   }
   button {
     width: 100%;
