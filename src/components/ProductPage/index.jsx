@@ -41,40 +41,38 @@ function ProductPage() {
   const review = data.reviews;
 
   return (
-    <div>
-      <div>
-        <Styled.ProductContainer>
-          <h2>{data.title}</h2>
-          <img src={data.imageUrl} alt={data.title} />
-          <p>{data.description}</p>
-          <p>Ordinary Price: {data.price}</p>
-          {data.discountedPrice !== data.price && (
-            <p>Discounted Price: {data.discountedPrice}</p>
-          )}
-          <p>Rating: {data.rating}</p>
-          <AddToCart data={data} />
-        </Styled.ProductContainer>
-        <Styled.ProductContainer>
-          <h2>Reviews</h2>
-          {review.length === 0 ? (
-            <h3>No reviews</h3>
-          ) : (
-            review.map((review) =>
-              review ? (
-                <li key={review.id}>
-                  <h3>{review.description}</h3>
-                  <div>Rating: {review.rating}</div>
-                  <h4>{review.username}</h4>
-                  <hr />
-                </li>
-              ) : (
-                { review }(<h2>No reviews</h2>)
-              )
+    <Styled.FlexWrapper>
+      <Styled.ProductContainer>
+        <h2>{data.title}</h2>
+        <img src={data.imageUrl} alt={data.title} />
+        <p>{data.description}</p>
+        <p>Ordinary Price: {data.price}</p>
+        {data.discountedPrice !== data.price && (
+          <p>Discounted Price: {data.discountedPrice}</p>
+        )}
+        <p>Rating: {data.rating}</p>
+        <AddToCart data={data} />
+      </Styled.ProductContainer>
+      <Styled.ReviewsContainer>
+        <h2>Reviews:</h2>
+        {review.length === 0 ? (
+          <h3>No reviews</h3>
+        ) : (
+          review.map((review) =>
+            review ? (
+              <li key={review.id}>
+                <h3>{review.description}</h3>
+                <div>Rating: {review.rating}</div>
+                <h4>{review.username}</h4>
+                <hr />
+              </li>
+            ) : (
+              { review }(<h2>No reviews</h2>)
             )
-          )}
-        </Styled.ProductContainer>
-      </div>
-    </div>
+          )
+        )}
+      </Styled.ReviewsContainer>
+    </Styled.FlexWrapper>
   );
 }
 

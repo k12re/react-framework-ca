@@ -23,6 +23,12 @@ export const Nav = styled.nav`
   }
 `;
 
+export const FlexWrapper = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+`;
+
 export const ProductListContainer = styled.ul`
   display: flex;
   flex-direction: row;
@@ -35,7 +41,42 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  max-height: 100vh;
+  flex: 0 0 auto;
 
+  // margin: 0 auto;
+  gap: 10px;
+  padding: 40px;
+  margin: 40px;
+  margin-bottom: 0;
+  max-width: 280px;
+  // max-height: 100%;
+  background-color: white;
+  filter: drop-shadow(0 0 0.75rem lightgrey);
+  li {
+    display: contents;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  button {
+    width: 100%;
+  }
+  img {
+    object-fit: cover;
+    max-height: 300px;
+    max-width: 100%;
+  }
+`;
+
+export const ReviewsContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-self: flex-start;
+  flex: 1;
+  // justify-content: space-between;
+  // max-height: 50%;
   // margin: 0 auto;
   gap: 10px;
   padding: 40px;
@@ -66,10 +107,12 @@ export const CheckoutContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  margin: 20px auto;
   min-height: 60vh;
+  max-width: 800px;
   gap: 10px;
   padding: 40px;
-  margin: 20px;
+  // margin: 20px;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
   button {
@@ -191,10 +234,11 @@ export const Button = styled.button`
   cursor: pointer;
   padding: 10px;
   min-width: 200px;
-  max-width: 800px;
+  max-width: 600px;
   margin: 0 auto;
   font-size: 1.5rem;
   font-weight: bold;
+
   a {
     text-decoration: none;
     font-weight: bold;

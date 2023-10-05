@@ -28,7 +28,7 @@ export function Search(props) {
           />
         </form>
       </Styled.SearchFormContainer>
-      <div>
+      <Styled.FlexWrapper>
         {searchResults.map((item) => (
           <Styled.ProductContainer key={item.id}>
             <li>
@@ -41,7 +41,7 @@ export function Search(props) {
             </li>
           </Styled.ProductContainer>
         ))}
-      </div>
+      </Styled.FlexWrapper>
     </div>
   );
 }
