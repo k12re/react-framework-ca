@@ -40,6 +40,13 @@ function ProductPage() {
 
   const review = data.reviews;
 
+  const ordinaryPrice = data.price;
+  const discountPrice = data.discountedPrice;
+
+  const priceDiff = ((ordinaryPrice - discountPrice) / ordinaryPrice) * 100;
+
+  console.log(priceDiff);
+
   return (
     <Styled.FlexWrapper>
       <Styled.ProductContainer>
@@ -50,6 +57,7 @@ function ProductPage() {
         {data.discountedPrice !== data.price && (
           <p>Discounted Price: {data.discountedPrice}</p>
         )}
+        <p>You Save:{priceDiff.toFixed(0)}%</p>
         <p>Rating: {data.rating}</p>
         <AddToCart data={data} />
       </Styled.ProductContainer>
