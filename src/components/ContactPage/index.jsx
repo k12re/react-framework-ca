@@ -42,6 +42,7 @@ function ContactPage() {
 
   return (
     <Styled.FormContainer>
+      <h1>Contact us</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="full-name">Full name: </label>
         <input name="full-name" id="full-name" {...register("fullName")} />

@@ -53,13 +53,16 @@ function Home() {
   const location = useLocation();
 
   return (
-    <Styled.ProductListContainer>
-      {location.pathname === "/" ? <Search data={data} /> : null}
+    <>
+      <h1>Our products</h1>
+      <Styled.ProductListContainer>
+        {location.pathname === "/" ? <Search data={data} /> : null}
 
-      {data.map((item) => (
-        <ProductItem key={item.id} data={item} />
-      ))}
-    </Styled.ProductListContainer>
+        {data.map((item) => (
+          <ProductItem key={item.id} data={item} />
+        ))}
+      </Styled.ProductListContainer>
+    </>
   );
 }
 

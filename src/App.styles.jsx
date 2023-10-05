@@ -109,7 +109,7 @@ export const CheckoutContainer = styled.div`
   justify-content: center;
   margin: 20px auto;
   min-height: 60vh;
-  max-width: 800px;
+  max-width: 600px;
   gap: 10px;
   padding: 40px;
   // margin: 20px;
@@ -167,12 +167,14 @@ export const CheckoutSuccess = styled.div`
 
 export const FormContainer = styled.div`
   display: flex;
-  flex-direction: row;
-  justify-content: center;
-  // padding: 40px;
-  // margin: 20px;
+  // flex-direction: row;
+  // justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin: 0 auto;
   gap: 10px;
   form {
+    max-width: 600px;
     padding: 40px;
     margin: 20px;
     background-color: white;
@@ -187,6 +189,7 @@ export const FormContainer = styled.div`
     padding: 6px;
     border: 1px solid black;
     width: 70vw;
+    max-width: 40vw;
   }
   button {
     width: 100%;
