@@ -55,9 +55,8 @@ function Home() {
   return (
     <>
       <h1>Our products</h1>
+      {location.pathname === "/" ? <Search data={data} /> : null}
       <Styled.ProductListContainer>
-        {location.pathname === "/" ? <Search data={data} /> : null}
-
         {data.map((item) => (
           <ProductItem key={item.id} data={item} />
         ))}

@@ -35,6 +35,8 @@ export const ProductListContainer = styled.ul`
   flex-wrap: wrap;
   justify-content: center;
   margin-bottom: 0;
+  margin: 0 auto;
+  max-width: 1800px;
 `;
 
 export const Discount = styled.h3`
@@ -56,7 +58,6 @@ export const ProductContainer = styled.div`
   justify-content: space-between;
   // max-height: 100vh;
   flex: 0 0 auto;
-
   // margin: 0 auto;
   gap: 10px;
   padding: 40px;
@@ -217,6 +218,8 @@ export const SearchFormContainer = styled.div`
   display: flex;
   flex-direction: row;
   justify-content: center;
+  max-width: 1400px;
+  margin: 0 auto;
   // padding: 40px;
   // margin: 20px;
   
