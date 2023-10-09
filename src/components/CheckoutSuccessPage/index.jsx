@@ -1,5 +1,5 @@
 import { useReducer } from "react";
-import { reducer, initialState } from "../../App";
+import { reducer, initialState } from "../Cart";
 import { Link } from "react-router-dom";
 import * as Styled from "../../App.styles";
 
