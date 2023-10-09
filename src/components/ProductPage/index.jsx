@@ -3,7 +3,7 @@ import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { url } from "../../App";
 import * as Styled from "../../App.styles";
-import { AddToCart } from "../../App";
+import { AddToCart } from "../Cart";
 
 function ProductPage() {
   const [data, setData] = useState(null);

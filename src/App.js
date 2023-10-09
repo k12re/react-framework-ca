@@ -20,7 +20,7 @@ import ProductPage from "./components/ProductPage";
 import ContactPage from "./components/ContactPage";
 import { CheckOutPage } from "./components/CheckoutPage";
 import { CheckOutSuccessPage } from "./components/CheckoutSuccessPage";
-import { Cart } from "./components/Cart";
+import { Cart, ClearCart, CartProvider } from "./components/Cart";
 import { Search } from "./components/Search";
 import * as Styled from "./App.styles";
 import CartIcon from "./images/cart.svg";
@@ -155,42 +155,42 @@ export function reducer(state, action) {
 
 export const CartContext = createContext();
 
-export function CartProvider({ children }) {
-  const [state, dispatch] = useReducer(reducer, initialState);
+// export function CartProvider({ children }) {
+//   const [state, dispatch] = useReducer(reducer, initialState);
 
-  return (
-    <CartContext.Provider value={{ state, dispatch }}>
-      {children}
-    </CartContext.Provider>
-  );
-}
+//   return (
+//     <CartContext.Provider value={{ state, dispatch }}>
+//       {children}
+//     </CartContext.Provider>
+//   );
+// }
 
-export function useCart() {
-  return useContext(CartContext);
-}
+// export function useCart() {
+//   return useContext(CartContext);
+// }
 
-export function AddToCart({ data }) {
-  const { dispatch } = useCart();
+// export function AddToCart({ data }) {
+//   const { dispatch } = useCart();
 
-  const handleClick = () => {
-    {
-      dispatch({ type: "addProduct", payload: data });
-    }
-  };
+//   const handleClick = () => {
+//     {
+//       dispatch({ type: "addProduct", payload: data });
+//     }
+//   };
 
-  return <Styled.Button onClick={handleClick}>Add to cart</Styled.Button>;
-}
+//   return <Styled.Button onClick={handleClick}>Add to cart</Styled.Button>;
+// }
 
-export function ClearCart() {
-  const { dispatch } = useCart();
-  const navigate = useNavigate();
+// export function ClearCart() {
+//   const { dispatch } = useCart();
+//   const navigate = useNavigate();
 
-  const handleClear = () => {
-    dispatch({ type: "clearCart" });
-    navigate("/checkoutsuccess");
-  };
-  return <Styled.Button onClick={handleClear}>Checkout</Styled.Button>;
-}
+//   const handleClear = () => {
+//     dispatch({ type: "clearCart" });
+//     navigate("/checkoutsuccess");
+//   };
+//   return <Styled.Button onClick={handleClear}>Checkout</Styled.Button>;
+// }
 
 function App() {
   return (

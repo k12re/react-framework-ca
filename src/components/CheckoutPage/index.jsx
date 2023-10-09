@@ -1,5 +1,6 @@
 import { useContext } from "react";
-import { ClearCart, CartContext } from "../../App";
+import { ClearCart } from "../Cart";
+import { CartContext } from "../../App";
 import { Link } from "react-router-dom";
 import * as Styled from "../../App.styles";
 
