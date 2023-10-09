@@ -56,15 +56,12 @@ export const ProductContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  // max-height: 100vh;
   flex: 0 0 auto;
-  // margin: 0 auto;
   gap: 10px;
   padding: 40px;
   margin: 40px;
   margin-bottom: 0;
   max-width: 280px;
-  // max-height: 100%;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
   li {
@@ -89,15 +86,11 @@ export const ReviewsContainer = styled.div`
   flex-direction: column;
   align-self: flex-start;
   flex: 1;
-  // justify-content: space-between;
-  // max-height: 50%;
-  // margin: 0 auto;
   gap: 10px;
   padding: 40px;
   margin: 40px;
   margin-bottom: 0;
   max-width: 280px;
-  // max-height: 100%;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
   li {
@@ -126,7 +119,6 @@ export const CheckoutContainer = styled.div`
   max-width: 600px;
   gap: 10px;
   padding: 40px;
-  // margin: 20px;
   background-color: white;
   filter: drop-shadow(0 0 0.75rem lightgrey);
   button {
@@ -166,7 +158,6 @@ export const CheckoutSuccess = styled.div`
   padding: 40px;
   margin: 20px;
   background-color: white;
-  // filter: drop-shadow(0 0 0.75rem lightgrey);
   h1 {
     text-align: center;
   }
@@ -181,8 +172,6 @@ export const CheckoutSuccess = styled.div`
 
 export const FormContainer = styled.div`
   display: flex;
-  // flex-direction: row;
-  // justify-content: center;
   flex-direction: column;
   align-items: center;
   margin: 0 auto;
@@ -220,9 +209,6 @@ export const SearchFormContainer = styled.div`
   justify-content: center;
   max-width: 1400px;
   margin: 0 auto;
-  // padding: 40px;
-  // margin: 20px;
-  
   form {
     width: 75vw;
     display: flex;
@@ -257,26 +243,6 @@ export const Button = styled.button`
   max-width: 600px;
   margin: 0 auto;
   font-size: 1.5rem;
-  font-weight: bold;
-
-  a {
-    text-decoration: none;
-    font-weight: bold;
-    color: inherit;
-  }
-  :hover {
-    background-color: lightcoral;
-  }
-`;
-
-export const ButtonSmall = styled.button`
-  border: 0;
-  background-color: lightpink;
-  color: white;
-  cursor: pointer;
-  padding: 10px;
-  min-width: 100px;
-  font-size: 1rem;
   font-weight: bold;
   a {
     text-decoration: none;

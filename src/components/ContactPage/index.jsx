@@ -56,8 +56,6 @@ function ContactPage() {
         <label htmlFor="body">Body text: </label>
         <input name="body" id="body" {...register("body")} />
         <p>{errors.body?.message}</p>
-        {/* <input type="submit" />
-      <button type="submit">Submit button</button> */}
         <Styled.Button>Submit</Styled.Button>
       </form>
     </Styled.FormContainer>

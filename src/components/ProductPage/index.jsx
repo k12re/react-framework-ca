@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { url } from "../../App";
@@ -38,8 +37,6 @@ function ProductPage() {
     return <div>Error</div>;
   }
 
-  console.log(data);
-
   const review = data.reviews;
 
   const ordinaryPrice = data.price;
@@ -54,13 +51,8 @@ function ProductPage() {
         {data.discountedPrice !== data.price && (
           <Styled.Discount>You Save: {priceDiff.toFixed(0)}%</Styled.Discount>
         )}
-        {/* <Styled.Discount>You Save: {priceDiff.toFixed(0)}%</Styled.Discount> */}
         <p>{data.description}</p>
         <p>Tags: {data.tags.join(", ")}</p>
-        {/* {data.discountedPrice !== data.price && (
-          <h3>Discounted Price: {data.discountedPrice}</h3>
-        )} */}
-
         <h3>Price: {data.discountedPrice}</h3>
         <h4>Rating: {data.rating}</h4>
         <AddToCart data={data} />
