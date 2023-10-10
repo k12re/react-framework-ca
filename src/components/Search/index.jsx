@@ -8,10 +8,11 @@ export function Search(props) {
 
   const handleSearch = (event) => {
     event.preventDefault();
+    setSearchResults([]);
     const results = props.data.filter((item) => {
       return item.title.toLowerCase().includes(searchQuery.toLowerCase());
     });
-    setSearchResults(results);
+    props.setSearchResults(results);
   };
 
   return (
