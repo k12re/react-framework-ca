@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 export const Nav = styled.nav`
-  // display: flex;
   background-color: lightpink;
-  // justify-content: center;
   ul {
     display: flex;
     justify-content: space-between;
@@ -12,8 +10,6 @@ export const Nav = styled.nav`
   }
   li {
     margin: 0 16px;
-    // display: inline-flex;
-    // justify-content: end;
   }
   a {
     text-decoration: none;
@@ -52,78 +48,46 @@ export const Discount = styled.h3`
   width: 180px;
 `;
 
-export const ProductContainer = styled.div`
+export const Container = styled.div`
   display: flex;
   flex-direction: column;
+  background-color: white;
+  gap: 10px;
+  padding: 40px;
+  margin: 40px;
+  margin-bottom: 0;
+  max-width: 280px;
+  filter: drop-shadow(0 0 0.75rem lightgrey);
+  li {
+    display: contents;
+  }
+  a {
+    text-decoration: none;
+    color: inherit;
+  }
+  img {
+    object-fit: cover;
+    max-height: 300px;
+    max-width: 100%;
+  }
+`;
+
+export const ProductContainer = styled(Container)`
   justify-content: space-between;
   flex: 0 0 auto;
-  gap: 10px;
-  padding: 40px;
-  margin: 40px;
-  margin-bottom: 0;
-  max-width: 280px;
-  background-color: white;
-  filter: drop-shadow(0 0 0.75rem lightgrey);
-  li {
-    display: contents;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  button {
-    width: 100%;
-  }
-  img {
-    object-fit: cover;
-    max-height: 300px;
-    max-width: 100%;
-  }
 `;
 
-export const ReviewsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const ReviewsContainer = styled(Container)`
+  display: block;
   align-self: flex-start;
   flex: 1;
-  gap: 10px;
-  padding: 40px;
-  margin: 40px;
-  margin-bottom: 0;
-  max-width: 280px;
-  background-color: white;
-  filter: drop-shadow(0 0 0.75rem lightgrey);
-  li {
-    display: contents;
-  }
-  a {
-    text-decoration: none;
-    color: inherit;
-  }
-  button {
-    width: 100%;
-  }
-  img {
-    object-fit: cover;
-    max-height: 300px;
-    max-width: 100%;
-  }
 `;
 
-export const CheckoutContainer = styled.div`
-  display: flex;
-  flex-direction: column;
+export const CheckoutContainer = styled(Container)`
   justify-content: center;
   margin: 20px auto;
   min-height: 60vh;
   max-width: 600px;
-  gap: 10px;
-  padding: 40px;
-  background-color: white;
-  filter: drop-shadow(0 0 0.75rem lightgrey);
-  button {
-    width: 100%;
-  }
   img {
     object-fit: cover;
     height: 60px;
@@ -131,7 +95,6 @@ export const CheckoutContainer = styled.div`
   }
   li {
     border: 1px solid lightgrey;
-    background-color: #fff;
     display: flex;
     font-weight: bold;
     margin: 5px 0;
@@ -156,17 +119,8 @@ export const CheckoutSuccess = styled.div`
   height: 60vh;
   gap: 10px;
   padding: 40px;
-  margin: 20px;
-  background-color: white;
   h1 {
     text-align: center;
-  }
-  button {
-    width: 100%;
-  }
-  img {
-    object-fit: cover;
-    height: 60px;
   }
 `;
 
@@ -174,7 +128,7 @@ export const FormContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: 0 auto;
+  // margin: 0 auto;
   gap: 10px;
   form {
     max-width: 600px;
@@ -190,16 +144,17 @@ export const FormContainer = styled.div`
   input {
     display: block;
     padding: 6px;
+    margin-top: 10px;
     border: 1px solid black;
     width: 70vw;
     box-sizing: border-box;
     max-width: 600px;
   }
-  button {
-    width: 100%;
-  }
   p {
     color: darkred;
+  }
+  button {
+    margin-top: 10px;
   }
 `;
 
@@ -210,10 +165,9 @@ export const SearchFormContainer = styled.div`
   max-width: 1400px;
   margin: 0 auto;
   form {
-    width: 75vw;
+    width: 70vw;
     display: flex;
     padding: 20px 20px;
-    // margin: 0 20px;
     background-color: white;
     filter: drop-shadow(0 0 0.75rem lightgrey);
   }
@@ -226,19 +180,17 @@ export const SearchFormContainer = styled.div`
     padding: 6px;
     border: 1px solid black;
     flex-grow: 3;
+  }
 
-  }
-  button {
-    // width: 100%;
-  }
 `;
 
 export const Button = styled.button`
   border: 0;
-  background-color: lightpink;
+  background-color: lightcoral;
   color: white;
   cursor: pointer;
   padding: 10px;
+  width: 100%;
   min-width: 200px;
   max-width: 600px;
   margin: 0 auto;
@@ -250,6 +202,6 @@ export const Button = styled.button`
     color: inherit;
   }
   :hover {
-    background-color: lightcoral;
+    background-color: lightpink;
   }
 `;
