@@ -58,20 +58,22 @@ function Home() {
       <h1>Our products</h1>
       <Search data={data} setSearchResults={setSearchResults} />
       <Styled.ProductListContainer>
-        {searchResults.length > 0
-          ? searchResults.map((item) => (
-              <Styled.ProductContainer key={item.id}>
-                <li>
-                  <h2>{item.title}</h2>
-                  <img src={item.imageUrl} alt={item.title} />
-                  <p>{item.description}</p>
-                  <Styled.Button>
-                    <Link to={`/product/${item.id}`}>View product</Link>
-                  </Styled.Button>
-                </li>
-              </Styled.ProductContainer>
-            ))
-          : data.map((item) => <ProductItem key={item.id} data={item} />)}
+        <Styled.FlexWrapper>
+          {searchResults.length > 0
+            ? searchResults.map((item) => (
+                <Styled.ProductContainer key={item.id}>
+                  <li>
+                    <h2>{item.title}</h2>
+                    <img src={item.imageUrl} alt={item.title} />
+                    <p>{item.description}</p>
+                    <Styled.Button>
+                      <Link to={`/product/${item.id}`}>View product</Link>
+                    </Styled.Button>
+                  </li>
+                </Styled.ProductContainer>
+              ))
+            : data.map((item) => <ProductItem key={item.id} data={item} />)}
+        </Styled.FlexWrapper>
       </Styled.ProductListContainer>
     </>
   );
