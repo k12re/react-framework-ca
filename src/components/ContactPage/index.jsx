@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import * as Styled from "../../App.styles";
+import { useState } from "react";
 
 const schema = yup
   .object({
@@ -31,19 +32,32 @@ function ContactPage() {
   const {
     register,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm({
     resolver: yupResolver(schema),
   });
 
+  const [showMessage, setShowMessage] = useState(false);
+
+  function MessageLogged() {
+    return <div style={{ color: "darkgreen" }}>Message logged</div>;
+  }
+
   function onSubmit(data) {
     console.log(data);
+    reset();
+    setShowMessage(true);
+
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 3000);
   }
 
   return (
     <Styled.FormContainer>
       <h1>Contact us</h1>
-      <form onSubmit={handleSubmit(onSubmit)}>
+      <form id="contactform" onSubmit={handleSubmit(onSubmit)}>
         <label htmlFor="full-name">Full name: </label>
         <input name="full-name" id="full-name" {...register("fullName")} />
         <p>{errors.fullName?.message}</p>
@@ -57,6 +71,7 @@ function ContactPage() {
         <input name="body" id="body" {...register("body")} />
         <p>{errors.body?.message}</p>
         <Styled.Button>Submit</Styled.Button>
+        {showMessage && <MessageLogged />}
       </form>
     </Styled.FormContainer>
   );
