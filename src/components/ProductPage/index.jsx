@@ -30,11 +30,11 @@ function ProductPage() {
   }, [id]);
 
   if (isLoading || !data) {
-    return <div>Loading...</div>;
+    return <div className="loading"></div>;
   }
 
   if (isError) {
-    return <div>Error</div>;
+    return <div className="error">An error occured</div>;
   }
 
   const review = data.reviews;
