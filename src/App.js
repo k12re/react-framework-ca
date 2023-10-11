@@ -110,7 +110,7 @@ function Nav() {
 }
 
 function Footer() {
-  return <footer>Footer</footer>;
+  return <footer>Ken Thore Bjerke Bøeng 2023</footer>;
 }
 
 function Layout({ data, children }) {
