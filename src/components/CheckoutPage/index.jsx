@@ -17,7 +17,7 @@ export function CheckOutPage() {
             <ul>
               {cart.map((item) => (
                 <li key={item.id}>
-                  <img src={item.imageUrl} />
+                  <img src={item.imageUrl} alt={item.title} />
                   <p>{item.title} - </p>
                   <p>Qty: {item.quantity}</p>
                 </li>
