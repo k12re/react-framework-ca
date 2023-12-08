@@ -43,3 +43,7 @@ Runs the app in the development mode.
 npm run build
 ```
 Builds the app for production to the `build` folder.
+
+## Contact
+
+- Ken Thore Bøeng [My LinkedIn page](https://www.linkedin.com/in/ken-thore-bøeng-b2b1b3ba/)
