@@ -1,5 +1,7 @@
 # Ecommerce shop
 
+![image](https://github.com/k12re/react-framework-ca/assets/83732570/240df330-7e68-4355-a930-ddf029f20983)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Description
